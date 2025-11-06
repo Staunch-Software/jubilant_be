@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Suppliers Directory</title>
+    <link rel="stylesheet" href="/static/css/suppliers.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="background-color: #fff;">
+    <header class="header-container">
+        
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="/" class="logo" aria-label="#"><img
+                                src="https://img1.wsimg.com/isteam/ip/46c16ae4-f23f-4e6f-88a2-e319391f42fa/Company%20Logo%202025%20v1.png/:/rs=w:138,h:118.9,cg:true,m/cr=w:138,h:118.9/qt=q:100/ll" /></a></span>
+                    <i class="bx bx-x siderbarClose"></i>
+            </div>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Service</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-column">
+                            <a href="/it_hardware_procure.html" style="color: #0056b3;">IT Hardware Procurement Solution</a>
+                            <a href="/service.html" style="color: #0056b3;">Warrenty/Returns/deliever</a>
+                            <a href="/terms.html" style="color: #0056b3;">Terms of Use/Policy</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">All Products <i data-feather="chevron-down" class="feather-icon"></i></a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-column">
+                            <a href="">CPU</a>
+                            <div class="nested-dropdown">
+                                <a href="/products.html" >AMD EPYC WOF/TRAY CPU</a>
+                                <a href="" >AMD DESKTOP BOX/TRAY CPU</a>
+                                <a href="" >INTEL BOX/TRAY CPU</a>
+                                <a href="" >INTEL XEON TRAY CPU</a>
+                            </div>
+                            <a href="">Hard Drive</a>
+                            <div class="nested-dropdown">
+                                <a href="">SEAGATE HDD SATA 2.5" & 3.5"</a>
+                                <a href="">WESTERN DIGITAL HDD SATA 2.5" & 3.5"</a>
+                                <a href="">TOSHIBA HDD SATA 2.5" & 3.5"</a>
+                            </div>
+                            <a href="#">SSD</a>
+                            <div class="nested-dropdown">
+                                <a href="">SAMSUNG SSD</a>
+                                <a href="">Sandisk SSD</a>
+                                <a href="">LEXAR SSD</a>
+                            </div>
+                            <a href="#">Memory</a>
+                            <div class="nested-dropdown">
+                                <a href="">HYNIX MEMORY SDIM & LDIM DDR</a>
+                                <a href="">SAMSUNG MEMROY SDIM & LDIM DDR</a>
+                                <a href="">KINGSTON MEMORY SDIM & LDIM DDR</a>
+                            </div>
+                            <a href="">Monitors</a>
+                            <div class="nested-dropdown">
+                                <a href="">SAMSUNG</a>
+                                <a href="">ACER</a>
+                                <a href="">HP</a>
+                                <a href="">DELL</a>
+                                <a href="">LENOVO</a>
+                            </div>
+                            <a href="">Laptop</a>
+                            <div class="nested-dropdown">
+                                <a href="">ACER</a>
+                                <a href="">HP</a>
+                                <a href="">DELL</a>
+                                <a href="">LENOVO</a>
+                            </div>
+                            <a href="">Mini Pc</a>
+                            <div class="nested-dropdown">
+                                <a href="">INTEL NUC</a>
+                                <a href="">HP</a>
+                            </div>
+                            <a href="">Business Notebooks</a>
+                            <div class="nested-dropdown">
+                                <a href="">HP</a>
+                                <a href="">DELL</a>
+                                <a href="">LENOVO</a>
+                            </div>
+                            <a href="">Networking</a>
+                            <div class="nested-dropdown">
+                                <a href="">LINKSYS</a>
+                                <a href="">ARUBA</a>
+                                <a href="">CISCO</a>
+                            </div>
+                            <a href="">Docking sections</a>
+                            <div class="nested-dropdown">
+                                <a href="">LENOVO</a>
+                                <a href="">DELL</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/suppliers.html">Brand Suppliers</a></li>
+                <li><a href="/inquiry.html">Inquiry</a></li>
+                <li><a href="/aboutus.html">About Us</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Products...">
+                <i data-feather="search" class="search-icon"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" style="height: 600px;">
+        <header class="header">
+            <h1>Our Brand Suppliers</h1>
+            <p>Select a letter to filter the available brands.</p>
+        </header>
+
+        <!-- Alphabet Filter Section -->
+        <div class="alphabet-filter-container">
+            <div id="alphabet-filter" class="alphabet-filter">
+                <button class="filter-btn active" onclick="filterBrands('ALL')">ALL</button>
+                <button class="filter-btn" onclick="filterBrands('A')">A</button>
+                <button class="filter-btn" onclick="filterBrands('B')">B</button>
+                <button class="filter-btn" onclick="filterBrands('C')">C</button>
+                <button class="filter-btn" onclick="filterBrands('D')">D</button>
+                <button class="filter-btn" onclick="filterBrands('E')">E</button>
+                <button class="filter-btn" onclick="filterBrands('F')">F</button>
+                <button class="filter-btn" onclick="filterBrands('G')">G</button>
+                <button class="filter-btn" onclick="filterBrands('H')">H</button>
+                <button class="filter-btn" onclick="filterBrands('I')">I</button>
+                <button class="filter-btn" onclick="filterBrands('J')">J</button>
+                <button class="filter-btn" onclick="filterBrands('K')">K</button>
+                <button class="filter-btn" onclick="filterBrands('L')">L</button>
+                <button class="filter-btn" onclick="filterBrands('M')">M</button>
+                <button class="filter-btn" onclick="filterBrands('N')">N</button>
+                <button class="filter-btn" onclick="filterBrands('O')">O</button>
+                <button class="filter-btn" onclick="filterBrands('P')">P</button>
+                <button class="filter-btn" onclick="filterBrands('Q')">Q</button>
+                <button class="filter-btn" onclick="filterBrands('R')">R</button>
+                <button class="filter-btn" onclick="filterBrands('S')">S</button>
+                <button class="filter-btn" onclick="filterBrands('T')">T</button>
+                <button class="filter-btn" onclick="filterBrands('U')">U</button>
+                <button class="filter-btn" onclick="filterBrands('V')">V</button>
+                <button class="filter-btn" onclick="filterBrands('W')">W</button>
+                <button class="filter-btn" onclick="filterBrands('X')">X</button>
+                <button class="filter-btn" onclick="filterBrands('Y')">Y</button>
+                <button class="filter-btn" onclick="filterBrands('Z')">Z</button>
+            </div>
+        </div>
+
+        <!-- Brand Logos Grid -->
+        <div id="brands-grid" class="brands-grid">
+            
+            <!-- Group A -->
+            <div class="brand-item" data-brand-initial="A">
+                <img src="https://placehold.co/150x80/2980b9/ffffff/png?text=Acme+Corp" alt="Acme Corp Logo">
+            </div>
+            <div class="brand-item" data-brand-initial="A">
+                <img src="https://placehold.co/150x80/16a085/ffffff/png?text=Alpha+Solutions" alt="Alpha Solutions Logo">
+            </div>
+            
+            <!-- Group B -->
+            <div class="brand-item" data-brand-initial="B">
+                <img src="https://placehold.co/150x80/d35400/ffffff/png?text=Beta+Brands" alt="Beta Brands Logo">
+            </div>
+            <div class="brand-item" data-brand-initial="B">
+                <img src="https://placehold.co/150x80/8e44ad/ffffff/png?text=Bold+Designs" alt="Bold Designs Logo">
+            </div>
+            
+            <!-- Group C -->
+            <div class="brand-item" data-brand-initial="C">
+                <img src="https://placehold.co/150x80/2c3e50/ffffff/png?text=Centauri+Co" alt="Centauri Co Logo">
+            </div>
+            <div class="brand-item" data-brand-initial="C">
+                <img src="https://placehold.co/150x80/c0392b/ffffff/png?text=Cortex+Inc" alt="Cortex Inc Logo">
+            </div>
+
+            <!-- Group D -->
+            <div class="brand-item" data-brand-initial="D">
+                <img src="https://placehold.co/150x80/2980b9/ffffff/png?text=Delta+Tech" alt="Delta Tech Logo">
+            </div>
+            
+            <!-- Group E -->
+            <div class="brand-item" data-brand-initial="E">
+                <img src="https://placehold.co/150x80/16a085/ffffff/png?text=Echo+Systems" alt="Echo Systems Logo">
+            </div>
+            
+            <!-- Group F -->
+            <div class="brand-item" data-brand-initial="F">
+                <img src="https://placehold.co/150x80/d35400/ffffff/png?text=Fusion+Group" alt="Fusion Group Logo">
+            </div>
+            
+            <!-- Group G -->
+            <div class="brand-item" data-brand-initial="G">
+                <img src="https://placehold.co/150x80/8e44ad/ffffff/png?text=Global+Goods" alt="Global Goods Logo">
+            </div>
+            
+            <!-- Group H -->
+            <div class="brand-item" data-brand-initial="H">
+                <img src="https://placehold.co/150x80/2c3e50/ffffff/png?text=Highland+Mfg" alt="Highland Mfg Logo">
+            </div>
+
+            <!-- Group I -->
+            <div class="brand-item" data-brand-initial="I">
+                <img src="https://placehold.co/150x80/c0392b/ffffff/png?text=Iron+Works" alt="Iron Works Logo">
+            </div>
+
+            <!-- Group J -->
+            <div class="brand-item" data-brand-initial="J">
+                <img src="https://placehold.co/150x80/2980b9/ffffff/png?text=Juno+Logistics" alt="Juno Logistics Logo">
+            </div>
+            
+            <!-- Group K -->
+            <div class="brand-item" data-brand-initial="K">
+                <img src="https://placehold.co/150x80/16a085/ffffff/png?text=Kinetic+Tech" alt="Kinetic Tech Logo">
+            </div>
+
+            <!-- Group L -->
+            <div class="brand-item" data-brand-initial="L">
+                <img src="https://placehold.co/150x80/d35400/ffffff/png?text=Lumin+Supply" alt="Lumin Supply Logo">
+            </div>
+
+            <!-- Group M -->
+            <div class="brand-item" data-brand-initial="M">
+                <img src="https://placehold.co/150x80/8e44ad/ffffff/png?text=Mega+Products" alt="Mega Products Logo">
+            </div>
+
+            <!-- Group N -->
+            <div class="brand-item" data-brand-initial="N">
+                <img src="https://placehold.co/150x80/2c3e50/ffffff/png?text=Nova+Ventures" alt="Nova Ventures Logo">
+            </div>
+            
+            
+            
+        </div>
+    </div>
+
+ <script>
+    function filterBrands(letter) {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const brandItems = document.querySelectorAll('.brand-item');
+        const flashItems = [];
+        let firstMatch = null;
+
+        // update active button
+        buttons.forEach(btn => btn.classList.remove('active'));
+        const clickedButton = Array.from(buttons)
+            .find(btn => btn.textContent.trim().toUpperCase() === letter.toUpperCase());
+        if (clickedButton) clickedButton.classList.add('active');
+
+        // show only matching items (or all for 'ALL')
+        brandItems.forEach(item => {
+            const initial = (item.getAttribute('data-brand-initial') || '').trim().toUpperCase();
+
+            if (letter === 'ALL') {
+                item.style.display = 'flex';
+                item.classList.remove('flash');
+            } else if (initial === letter.toUpperCase()) {
+                item.style.display = 'flex';
+                flashItems.push(item);
+                if (!firstMatch) firstMatch = item;
+            } else {
+                item.style.display = 'none';
+                item.classList.remove('flash');
+            }
+        });
+
+        // scroll first match into view
+        // if (firstMatch) {
+        //     firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // }
+
+        // briefly flash matched items for emphasis
+        setTimeout(() => {
+            flashItems.forEach(item => {
+                item.classList.add('flash');
+                setTimeout(() => item.classList.remove('flash'), 1000);
+            });
+        }, 100);
+    }
+</script>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Jubilant Tech</h3>
+                <p>Your premier global supplier of IT hardware and components.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/aboutus.html">About Us</a></li>
+                    <li><a href="/inquiry.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>Email: sales@jubilant-tech.com</p>
+                <p>Phone: +65 65206545</p>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i data-feather="facebook"></i></a>
+                    <a href="#"><i data-feather="twitter"></i></a>
+                    <a href="#"><i data-feather="linkedin"></i></a>
+                    <script src="https://unpkg.com/feather-icons"></script>
+    
+                    <script>
+                        feather.replace(); 
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jubilant Tech. All Rights Reserved.</p>
+        </div>
+    </footer> 
+        <!-- Inquiry Modal -->
+  <button class="inquiry-button" onclick="toggleModal('open')">💬 Inquiry</button>
+
+  <div id="inquiryModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Send an Inquiry</h2>
+        <span class="close-btn" onclick="toggleModal('close')">&times;</span>
+      </div>
+
+      <p class="modal-subtitle">Tell us what you need—we'll respond within 24 hours.</p>
+
+      <form id="inquiryForm" action="/send-inquiry" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" value="+91 98765 43210" />
+
+        <label for="product">Product / Service</label>
+        <select id="product" name="product">
+          <option>Select</option>
+          <option>Jubilant System</option>
+          <option>Other Service</option>
+        </select>
+
+        <label for="quantity">Quantity (optional)</label>
+        <input type="number" id="quantity" name="quantity" placeholder="1" />
+
+        <p class="modal-footer-text">
+          We respect your privacy. We'll only use this info to reply.
+        </p>
+
+        <button type="submit" class="submit-button">Inquiry New</button>
+        <p id="successMsg" style="color: green; display: none;">Inquiry sent successfully!</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script>
+    function toggleModal(action) {
+      const modal = document.getElementById("inquiryModal");
+      modal.style.display = action === "open" ? "flex" : "none";
+    }
+
+    document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const response = await fetch("/send-inquiry", { method: "POST", body: formData });
+      const result = await response.json();
+      const successMsg = document.getElementById("successMsg");
+      const modal = document.getElementById("inquiryModal");
+
+      if (result.success) {
+        successMsg.textContent = result.message || "Inquiry sent successfully!";
+        successMsg.style.color = "green";
+        successMsg.style.display = "block";
+        this.reset();
+        setTimeout(() => (modal.style.display = "none"), 2000);
+      } else {
+        successMsg.textContent = result.message || "Failed to send inquiry. Please try again.";
+        successMsg.style.color = "red";
+        successMsg.style.display = "block";
+      }
+
+      setTimeout(() => (successMsg.style.display = "none"), 5000);
+    });
+
+    feather.replace();
+  </script>
+
+ 
+</body>
+</html>

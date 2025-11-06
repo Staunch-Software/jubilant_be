@@ -1,0 +1,972 @@
+:root{
+  --accent: #0b6efd;
+  --panel-bg: #ffffff;
+  --shadow: 0 8px 28px rgba(11, 110, 253, 0.12);
+  --muted: #6b7280;
+  --radius: 12px;
+  --glass: rgba(255,255,255,0.75);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: light;
+}
+/* General Body Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header & Navigation */
+.header-container {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top-bar {
+    background: #0052cc;
+    color: white ;
+    opacity: 0.8;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.main-nav {
+    display: flex;
+    background:linear-gradient(180deg,var(--accent), #1d2b3a);
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    margin: 0 auto;
+    height: 139px;
+    opacity: 2.5;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .main-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+.logo a {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #0052cc;
+    text-decoration: none;
+    letter-spacing: -1px;
+    align-items: left;
+    height: 119px;
+    width: 118.96px;
+    margin-top: 0 auto;
+
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    /* color: #000000; */
+    font-weight: 600;
+    /* color: red; */
+    font-size: 1em;
+    padding: 5px 0;
+    position: relative;
+    /* transition: color 0.3s;
+} */
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    /* background: whitesmoke; */
+    /* transition: width 0.3s; */
+}
+
+.nav-links .nested-dropdown a::after{
+    /* padding: 0px;
+    margin: 0px; */
+    content: "";
+    text-decoration: none;
+
+transition: none;
+
+
+}
+.nav-links a:hover, .nav-links a:focus {
+    color: whitesmoke;
+    
+}
+
+.nav-links .nested-dropdown>a{
+    color: #0052CC;
+}
+
+.nav-links .nested-dropdown>a:hover{
+    color: whitesmoke;
+    background-color: #0052cc;
+    /* border-color: whitesmoke; */
+    border-color: #111;
+    border:12px solid #111;
+    /* border-right: 12px; */
+    border-bottom: 0px;
+    border-left: 0px;
+    border-top: 0px;
+}
+
+
+
+.nav-links a:hover::after, .nav-links a:focus::after {
+    width: 100%;
+}
+
+.feather-icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* background-color: #333; */
+    font-family: Arial, sans-serif;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.nav-links li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* .nav-links li a:hover {
+    background-color: #575757;
+} */
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 250px; 
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    z-index: 10;
+    padding: 0; 
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block; 
+}
+
+.dropdown-column {
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+}
+
+/* .dropdown-content a {
+    color: red;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    white-space: nowrap; 
+} */
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border: solid #0052CC;
+    border-left: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+
+
+.dropdown-column>a{
+    color: #0052CC;
+}
+
+.dropdown-column > a:has(+ .nested-dropdown) {
+    font-weight: bold;
+    color: #0056b3; 
+    background-color: white; 
+    position: relative; 
+}
+
+.nested-dropdown {
+    display: none; 
+    position: absolute; 
+    top: 0; 
+    left: 100%; 
+    background-color: white; 
+    min-width: 250px;
+    /* box-shadow: 4px 0px 8px 0px rgba(0,0,0,0.1); */
+    z-index: 20; 
+    padding: 0; 
+    margin-left: 1px; 
+}
+
+
+.dropdown-column a:hover + .nested-dropdown {
+    display: block;
+}
+
+.nested-dropdown:hover {
+    display: block;
+}
+
+.nested-dropdown{
+    height: 537px;
+    width: 400px;
+}
+
+
+
+.dropdown-column > a:hover {
+    background-color: white; 
+   
+}
+
+
+/* Search Bar */
+.search-bar {
+    position: relative;
+}
+
+.search-bar input {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 35px 8px 15px;
+    font-size: 0.9em;
+    width: 200px;
+    transition: width 0.3s, box-shadow 0.3s;
+}
+
+.search-bar input:focus {
+    width: 250px;
+    outline: none;
+    border-color: #0052cc;
+    box-shadow: 0 0 5px rgba(0, 82, 204, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+
+
+#header{
+    background-image: url(/static/images/procureheader1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    padding-top: 50px;
+    margin-bottom: 30px;
+}
+
+#header h2{
+    font-size: 40px;
+    padding-bottom: 25px;
+    color: white;
+}
+
+#header img{
+    height: 20px;
+    width: 20px;
+    margin-right: 20px;
+}
+
+#header a{
+    font-size: 20px;
+    color: rgb(65, 115, 159);
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+#header p{
+    color: white;
+}
+
+#header a:hover{
+    color: white;
+    width: 300px;
+    background-color: rgb(87, 159, 222);
+    font-weight: bold;
+}
+#products_li{
+    margin-bottom: 30px;
+}
+
+#products_li img{
+    height: 50px;
+    width: 50px;
+    margin-right: 25px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+#products_li .row{
+    justify-content: space-evenly;    
+}
+
+#products_li h3{
+    font-size: 35px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
+#products_li a{
+    text-decoration: none;
+    color: black;
+}
+
+/* Container and Title Styles */
+.why-us-section {
+    background-color: #192038; /* Dark blue background from image */
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+/* Slider Viewport (The window that hides overflow) */
+.slider-container {
+    position: relative; /* For positioning buttons */
+    max-width: 1250px; /* Max width of your grid */
+    margin: 0 auto;
+    overflow: hidden; /* CRITICAL: Hides cards not currently in view */
+    padding: 0 50px; /* Space for buttons not to overlap content */
+}
+
+/* The Card Track (The element that moves) */
+.card-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth scrolling animation */
+    gap: 30px; /* Space between cards */
+    
+    /* Disables browser's default scrollbar */
+    overflow-x: scroll; 
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.card-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+
+/* Individual Card Styles */
+.card-item {
+    min-width: 300px; /* Fixed width for each card */
+    /* flex-shrink: 0;  */
+    background-color: #192038; /* Match section background */
+    border: 1px solid #f9fafc; /* Thin blue border from image */
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.card-image-wrapper {
+    height: 200px; 
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.card-item img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #4a6fa5; /* Inner border for the image */
+}
+
+/* Navigation Button Styles */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 24px;
+    border-radius: 50%;
+    border: none;
+    width: 50px;
+}
+
+.prev-button { 
+    left: 0;
+    margin-right: 20px;
+ }
+.next-button { 
+    right: 0;
+    margin-left: 20px; 
+}
+
+/* --- Global & Base Form Layout --- */
+.consultation-section {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px; /* Light background from image */
+    font-family: Arial, sans-serif;
+}
+
+/* Left side (Title and Description) */
+.consultation-info {
+    flex: 0 0 35%;
+    padding-right: 50px;
+}
+
+.consultation-info h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #333; 
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.consultation-info p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Right side (The Form Container) */
+.consultation-form-wrapper {
+    flex: 1; 
+}
+
+.consultation-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px 30px; /* Space between rows */
+}
+
+/* Row wrapper for two-column inputs */
+.form-row {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+
+/* General Input Group Styling */
+.form-group {
+    position: relative;
+    /* Removed padding-top for floating label */
+}
+
+.half-width {
+    flex: 1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* --- Input and Select Styling (Placeholder Style) --- */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    /* padding: 8px 0; */
+    border: none;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #333;
+    background: transparent;
+    outline: none;
+}
+
+/* Quantity Select Box Styling */
+.quantity-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23333" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.01 2.345 4 3.204 4h9.592c.86 0 1.32 1.01.753 1.659l-4.796 5.482a1 1 0 0 1-1.506 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 25px; 
+}
+
+/* REMOVED: All CSS related to the <label> for floating effect. */
+
+
+/* Textarea specific styling */
+.textarea-group {
+    margin-top: 15px;
+}
+
+.textarea-group textarea {
+    min-height: 80px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* --- PHONE NUMBER ALIGNMENT FIX --- */
+
+.phone-group-wrapper {
+    /* Remove default padding-top */
+    padding-top: 0; 
+}
+
+.phone-input-container {
+    display: flex;
+    align-items: flex-end; 
+    width: 100%;
+    
+    /* Removed padding-top since we don't need label space */
+    position: relative; 
+    
+    /* Apply the bottom border here */
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px; /* Vertical space for text to sit above the line */
+}
+
+/* The actual Phone Number input field */
+#phone {
+    flex-grow: 1;
+    padding-left: 10px; 
+}
+
+/* Styling the Country Dropdown (<select>) */
+#country-code {
+    border: none;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    flex-shrink: 0;
+    max-width: 80px; 
+    font-size: 16px;
+    line-height: 1;
+    /* padding: 0 5px 0 0;  */
+    padding-left: 0px;
+}
+
+/* --- Required Error Text --- */
+.required-error {
+    font-size: 12px;
+    color: #d9534f; 
+    margin-top: 5px;
+    display: block;
+}
+
+/* --- Actions (Checkbox and Button) --- */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.checkbox-label {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.submit-button {
+    background: white;
+    color: #337ab7;
+    border: 1px solid #337ab7;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #337ab7;
+    color: white;
+}
+
+#who_logo{
+    text-align: center;
+    width: 500px;
+    height: 240px;
+    padding-top: 20px;
+    background: linear-gradient(135deg,rgb(239, 235, 235) 5%,rgb(31, 78, 118) 50%,rgb(2, 35, 73) 100%);
+}
+#who_img{
+    height: 200px;
+    width: 300px;
+}
+
+#who_we .row{
+    justify-content: space-evenly;
+}
+
+#who_we{
+    background-color: #192038;
+    padding-top: 80px;
+    color: white;
+    height: 400px;
+}
+
+/* Ensure the font and size are consistent */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.partners-section {
+    max-width: 1200px; /* Max width to center the section */
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* Header (Partners title and View More button) */
+.partners-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.partners-header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #333;
+}
+
+.view-more-button {
+    /* Style to match the image: light background, blue text, gray border */
+    background: white;
+    color: #337ab7;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.view-more-button:hover {
+    background-color: #f0f0f0;
+}
+
+
+/* --- Logo Grid Layout --- */
+.partners-grid {
+    display: grid;
+    /* Create 6 equal columns */
+    grid-template-columns: repeat(6, 1fr); 
+    
+    /* Simulate the thin gray lines around the grid cells */
+    background-color: white; /* Ensure background is white behind logos */
+}
+
+.partner-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100px;
+    
+    /* Set transition for hover effect */
+    transition: background-color 0.3s;
+}
+
+.partner-logo img {
+    max-width: 70%;
+    max-height: 60px;
+    object-fit: contain;
+    /* Use grayscale filter to match the appearance of the logos in the image */
+    filter: grayscale(100%); 
+    opacity: 0.7;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+/* Hover effect */
+.partner-logo:hover img {
+    filter: none; /* Restore original color on hover */
+    opacity: 1;
+}
+
+.partner-logo:hover {
+    background-color: #fafafa; /* Slight highlight on hover */
+}
+
+:root{
+  --accent: #0b6efd;
+  --panel-bg: #ffffff;
+  --shadow: 0 8px 28px rgba(11, 110, 253, 0.12);
+  --muted: #6b7280;
+  --radius: 12px;
+  --glass: rgba(255,255,255,0.75);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: light;
+}
+/* General Body Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Footer */
+.footer {
+    background: #1d2b3a;
+    color: #a9b3c1;
+    padding-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.footer-column {
+    margin-bottom: 30px;
+    min-width: 200px;
+}
+
+.footer-column h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.footer-column p {
+    margin: 5px 0;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li a {
+    color: #a9b3c1;
+    text-decoration: none;
+    line-height: 2;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+}
+
+.social-icons a {
+    color: #a9b3c1;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #34495e;
+    margin-top: 20px;
+}
+/* --- Inquiry Toggle Button (from the main page) --- */
+.inquiry-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background:linear-gradient(180deg,var(--accent), #1d2b3a);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------- */
+/* --- MODAL CENTERING STYLES --- */
+/* ------------------------------------- */
+
+.modal-overlay {
+    /* 1. Position and Size: Cover the entire screen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1000; /* Ensure it's on top of other content */
+
+    /* 2. Centering using Flexbox */
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Maximum width for a clean look */
+    /* Ensure content doesn't affect the centering */
+    margin: auto; 
+}
+
+
+/* ------------------------------------- */
+/* --- MODAL INNER STYLES (Based on Video) --- */
+/* ------------------------------------- */
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.close-btn {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1; /* Aligns the 'x' vertically */
+}
+
+.close-btn:hover {
+    color: #666;
+}
+
+.modal-subtitle {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select {
+    padding: 10px;
+    /* margin-bottom: 15px; */
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    font-size: 1em;
+}
+
+select {
+    appearance: none; /* Remove default select styling */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%20188.7L154.5%2056.2c-4.4-4.4-11.4-4.4-15.8%200L6.7%20188.7c-4.4%204.4-4.4%2011.4%200%2015.8l15.8%2015.8c4.4%204.4%2011.4%204.4%2015.8%200l106.2-106.2L255.4%20220.3c4.4%204.4%2011.4%204.4%2015.8%200l15.8-15.8c4.4-4.4%204.4-11.4%200-15.8z%22%2F%3E%3C%2Fsvg%3E'); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px;
+    padding-right: 30px; /* Space for the arrow */
+}
+
+.modal-footer-text {
+    font-size: 0.75em;
+    color: #999;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.submit-button {
+    background-color: #007bff; /* Blue color matching the video's style */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+.iti__selected-flag {
+  background-color: transparent !important;
+}
+
+
