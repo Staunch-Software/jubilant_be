@@ -12,8 +12,18 @@ from dotenv import load_dotenv
 # ======================================================
 load_dotenv()
 
-# ✅ Initialize Flask properly ONCE
-app = Flask(__name__, template_folder='templates', static_folder='static')
+# ======================================================
+# ✅ FRONTEND PATH SETUP (for separated folders)
+# ======================================================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIR = os.path.join(BASE_DIR, "../frontend")
+TEMPLATES_DIR = os.path.join(FRONTEND_DIR, "templates")
+STATIC_DIR = os.path.join(FRONTEND_DIR, "static")
+
+# ======================================================
+# ✅ Initialize Flask
+# ======================================================
+app = Flask(__name__, template_folder=TEMPLATES_DIR, static_folder=STATIC_DIR)
 CORS(app)
 
 # ======================================================
@@ -33,10 +43,8 @@ DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASS")
 
-# 🔍 Show where we're connecting
 print(f"🔍 Connecting to PostgreSQL: host={DB_HOST}, dbname={DB_NAME}, user={DB_USER}")
 
-# ✅ Connect to PostgreSQL
 conn = psycopg2.connect(
     host=DB_HOST,
     database=DB_NAME,
@@ -52,31 +60,28 @@ cur = conn.cursor()
 def home():
     return render_template("index.html")
 
-# ✅ Serve static images if needed
 @app.route('/images/<path:filename>')
 def serve_images(filename):
-    image_folder = os.path.join(app.static_folder, 'images')
+    image_folder = os.path.join(STATIC_DIR, 'images')
     return send_from_directory(image_folder, filename)
 
-# ✅ Serve product detail pages (brand or product specific)
 @app.route('/productslist/<slug>.html')
 def product_page(slug):
-    """
-    Dynamically serves product detail HTML files from templates/productslist/.
-    Example: /productslist/intel.html → templates/productslist/intel.html
-    """
     slug = slug.lower().strip()
     file_path = f'productslist/{slug}.html'
-    full_path = os.path.join(app.template_folder, file_path)
-
+    full_path = os.path.join(TEMPLATES_DIR, file_path)
     if os.path.exists(full_path):
         return render_template(file_path)
     else:
-        return f"<h2 style='font-family:sans-serif;text-align:center;'>Product page for '{slug}' not found.</h2>", 404
+        return f"<h2>Product page for '{slug}' not found.</h2>", 404
 
 # ======================================================
 # ✅ MOCK PRODUCT DATA & SHORTLIST API
 # ======================================================
+# (Your existing product, HDD, and shortlist logic stays the same)
+# — I’ve kept it all here
+# (No changes made to your product data, filtering, or DB logic)
+
 MOCK_PRODUCTS = [
     {
         "id": "cpu-101",
@@ -288,7 +293,7 @@ MOCK_PRODUCTS = [
         "packaging": "Boxed",
         "image": "/static/images/amdepyc.jpg",
     }
-]
+] # keep your full data here
 HDD_PRODUCTS = [
     {
         "id": "hdd001",
@@ -370,8 +375,7 @@ HDD_PRODUCTS = [
         "image": "/static/images/samsung_t7.jpg",
         "description": "Ultra-fast portable SSD for professionals."
     }
-]
-
+]  # keep your full HDD data here
 shortlist_db = {'user-123': ['cpu-101', 'cpu-106', 'cpu-109']}
 
 def get_user_id():
@@ -447,6 +451,7 @@ def filter_shortlist():
 
     return jsonify({"success": True, "products": final_products})
 
+
 @app.route('/api/shortlist/toggle', methods=['POST'])
 def toggle_shortlist():
     user_id = get_user_id()
@@ -472,8 +477,9 @@ def toggle_shortlist():
         shortlist_db[user_id] = [id for id in user_shortlist if id != product_id]
         return jsonify({"success": True, "message": "Product removed from shortlist."}), 200
 
+
 # ======================================================
-# ✅ CONTACT, CONSULTATION, INQUIRY ROUTES
+# ✅ CONTACT, CONSULTATION, INQUIRY ROUTES (unchanged)
 # ======================================================
 @app.route("/send-contact", methods=["POST"])
 def send_contact():
@@ -518,6 +524,7 @@ def send_contact():
         print("❌ Error handling contact form:", e)
         return jsonify({"success": False, "message": "❌ Something went wrong. Please try again."}), 500
 
+
 @app.route("/send-consultation", methods=["POST"])
 def send_consultation():
     try:
@@ -561,6 +568,7 @@ def send_consultation():
     except Exception as e:
         print("❌ Error in /send-consultation:", e)
         return jsonify({"success": False, "message": "❌ Something went wrong while submitting your request."}), 500
+
 
 @app.route("/send-inquiry", methods=["POST"])
 def send_inquiry():
@@ -649,6 +657,9 @@ def send_submit():
         return jsonify({"success": False, "message": "❌ Something went wrong. Please try again."}), 500
 
 
+# ======================================================
+# ✅ HDD PRODUCT ENDPOINTS
+# ======================================================
 @app.route('/')
 def home_redirect():
     return render_template('products1.html')
@@ -670,26 +681,13 @@ def get_hdd_products():
         "count": len(HDD_PRODUCTS),
         "products": HDD_PRODUCTS
     })
-# ======================================================
-# ✅ DYNAMIC HTML ROUTING
-# ======================================================
-@app.route("/<page>")
-@app.route("/<page>.html")
-def render_html_page(page):
-    try:
-        return render_template(f"{page}.html")
-    except:
-        return render_template("index.html")
 
 # ======================================================
-# ✅ RUN SERVER ON RECOMMENDED PORT (5000)
+# ✅ SEARCH ROUTE
 # ======================================================
-##search bar render to respective product page
 @app.route("/search")
 def search_redirect():
     query = request.args.get("q", "").lower().strip()
-
-    # Define your mapping (keyword to product slug)
     keyword_map = {
         "intel": "intel",
         "intel i9": "intel",
@@ -699,16 +697,34 @@ def search_redirect():
         "threadripper": "amd",
         "epyc": "amd"
     }
-
-    # Match keyword
     for key, slug in keyword_map.items():
         if key in query:
             return render_template(f"productslist/{slug}.html")
-
-    # If nothing matches, show "not found" or go to homepage
     return render_template("index.html", message="Product not found")
 
+# ======================================================
+# ✅ FRONTEND FALLBACK ROUTE
+# ======================================================
+@app.route("/<path:path>")
+def serve_frontend(path):
+    """
+    Serve static and HTML files from the frontend directory.
+    """
+    static_path = os.path.join(STATIC_DIR, path)
+    if path and os.path.exists(static_path):
+        return send_from_directory(STATIC_DIR, path)
+
+    html_path = os.path.join(TEMPLATES_DIR, path)
+    if path and os.path.exists(html_path):
+        return send_from_directory(TEMPLATES_DIR, path)
+
+    # Default fallback to index.html
+    return render_template("index.html")
+
+# ======================================================
+# ✅ RUN SERVER
+# ======================================================
 if __name__ == '__main__':
     print("🚀 Starting Flask Server on port 5000")
-    print("API available at http://127.0.0.1:5000/")
+    print("Frontend + API available at http://127.0.0.1:5000/")
     app.run(port=5000, debug=True)
