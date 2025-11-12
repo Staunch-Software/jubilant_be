@@ -8,6 +8,24 @@
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color-scheme: light;
 }
+.search-bar button {
+  border: none;            /* removes the gray border line */
+  background: none;        /* removes default button background */
+  outline: none;           /* removes focus ring/blue outline */
+  cursor: pointer;         /* makes it clickable */
+  padding: 0;              /* removes extra spacing */
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar button:focus,
+.search-bar button:active {
+  outline: none;           /* removes outline on click/focus */
+  box-shadow: none;        /* prevents shadow highlight */
+}
+
 /* General Body Styles */
 body {
     font-family: 'Inter', sans-serif;

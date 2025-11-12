@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hard Drive Shortlist</title>
+  <link rel="stylesheet" href="/static/css/products.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Header (reuse your main header nav) -->
+
+  <main class="main-container">
+    
+    <!-- ==================== LEFT FILTER SIDEBAR ==================== -->
+    <aside class="filter-sidebar">
+      <h2>Filter Options</h2>
+
+      <!-- Category -->
+      <div class="filter-group active">
+        <h3 class="filter-header">Category <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="category" value="Internal HDD" class="filter-checkbox" /> Internal HDD</label>
+          <label><input type="checkbox" name="category" value="External HDD" class="filter-checkbox" /> External HDD</label>
+          <label><input type="checkbox" name="category" value="Enterprise HDD" class="filter-checkbox" /> Enterprise HDD</label>
+          <label><input type="checkbox" name="category" value="SSD" class="filter-checkbox" /> SSD</label>
+        </div>
+      </div>
+
+      <!-- Brands -->
+      <div class="filter-group">
+        <h3 class="filter-header">Brands <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="brand" value="Seagate" class="filter-checkbox" /> Seagate</label>
+          <label><input type="checkbox" name="brand" value="Western Digital" class="filter-checkbox" /> Western Digital</label>
+          <label><input type="checkbox" name="brand" value="Toshiba" class="filter-checkbox" /> Toshiba</label>
+          <label><input type="checkbox" name="brand" value="Samsung" class="filter-checkbox" /> Samsung</label>
+        </div>
+      </div>
+
+      <!-- Application -->
+      <div class="filter-group">
+        <h3 class="filter-header">Application <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="application" value="Desktop" class="filter-checkbox" /> Desktop</label>
+          <label><input type="checkbox" name="application" value="Server" class="filter-checkbox" /> Server</label>
+          <label><input type="checkbox" name="application" value="NAS" class="filter-checkbox" /> NAS</label>
+          <label><input type="checkbox" name="application" value="Surveillance" class="filter-checkbox" /> Surveillance</label>
+        </div>
+      </div>
+
+      <!-- Capacity -->
+      <div class="filter-group">
+        <h3 class="filter-header">Capacity <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="capacity" value="500" class="filter-checkbox" /> 500 GB</label>
+          <label><input type="checkbox" name="capacity" value="1000" class="filter-checkbox" /> 1 TB</label>
+          <label><input type="checkbox" name="capacity" value="2000" class="filter-checkbox" /> 2 TB</label>
+          <label><input type="checkbox" name="capacity" value="4000" class="filter-checkbox" /> 4 TB</label>
+          <label><input type="checkbox" name="capacity" value="8000" class="filter-checkbox" /> 8 TB</label>
+        </div>
+      </div>
+
+      <!-- Form Factor -->
+      <div class="filter-group">
+        <h3 class="filter-header">Form Factor <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="form_factor" value="2.5" class="filter-checkbox" /> 2.5"</label>
+          <label><input type="checkbox" name="form_factor" value="3.5" class="filter-checkbox" /> 3.5"</label>
+          <label><input type="checkbox" name="form_factor" value="M.2" class="filter-checkbox" /> M.2 (for SSDs)</label>
+        </div>
+      </div>
+
+      <!-- RPM -->
+      <div class="filter-group">
+        <h3 class="filter-header">RPM <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="rpm" value="5400" class="filter-checkbox" /> 5400 RPM</label>
+          <label><input type="checkbox" name="rpm" value="7200" class="filter-checkbox" /> 7200 RPM</label>
+          <label><input type="checkbox" name="rpm" value="10000" class="filter-checkbox" /> 10000 RPM</label>
+          <label><input type="checkbox" name="rpm" value="15000" class="filter-checkbox" /> 15000 RPM</label>
+        </div>
+      </div>
+
+      <!-- Interface -->
+      <div class="filter-group">
+        <h3 class="filter-header">Interface <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="interface" value="SATA" class="filter-checkbox" /> SATA</label>
+          <label><input type="checkbox" name="interface" value="SAS" class="filter-checkbox" /> SAS</label>
+          <label><input type="checkbox" name="interface" value="NVMe" class="filter-checkbox" /> NVMe</label>
+          <label><input type="checkbox" name="interface" value="USB 3.0" class="filter-checkbox" /> USB 3.0</label>
+        </div>
+      </div>
+
+      <!-- Speed -->
+      <div class="filter-group">
+        <h3 class="filter-header">Speed <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="speed" value="100" class="filter-checkbox" /> Up to 100 MB/s</label>
+          <label><input type="checkbox" name="speed" value="200" class="filter-checkbox" /> Up to 200 MB/s</label>
+          <label><input type="checkbox" name="speed" value="500" class="filter-checkbox" /> Up to 500 MB/s</label>
+          <label><input type="checkbox" name="speed" value="3500" class="filter-checkbox" /> Up to 3500 MB/s</label>
+        </div>
+      </div>
+
+      <!-- Cache -->
+      <div class="filter-group">
+        <h3 class="filter-header">Cache <span class="arrow">&#9656;</span></h3>
+        <div class="filter-content">
+          <label><input type="checkbox" name="cache" value="32" class="filter-checkbox" /> 32 MB</label>
+          <label><input type="checkbox" name="cache" value="64" class="filter-checkbox" /> 64 MB</label>
+          <label><input type="checkbox" name="cache" value="128" class="filter-checkbox" /> 128 MB</label>
+          <label><input type="checkbox" name="cache" value="256" class="filter-checkbox" /> 256 MB</label>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h3>Max Price</h3>
+        <div class="range-display"><span id="price-value">$1000</span></div>
+        <input type="range" id="price-max" min="50" max="1000" value="1000" step="10" />
+      </div>
+    </aside>
+
+    <!-- ==================== PRODUCT LIST AREA ==================== -->
+    <section class="product-content">
+      <div class="product-header">
+        <h1>Hard Drive Shortlist</h1>
+      </div>
+      <div id="product-grid" class="product-grid"></div>
+      <div id="pagination-container"></div>
+    </section>
+    <script src="/static/javascript/script2.js"></script>
+  </main>
+
+</body>
+</html>

@@ -51,8 +51,8 @@
                     <div class="dropdown-content">
                         <div class="dropdown-column">
                             <a href="/it_hardware_procure.html" style="color: #0056b3;">IT Hardware Procurement Solution</a>
-                            <a href="/service.html" style="color: #0056b3;">Warrenty/Returns/deliever</a>
-                            <a href="/terms.html" style="color: #0056b3;">Terms of Use/Policy</a>
+                            <a href="services.html" style="color: #0056b3;">Warrenty/Returns/deliever</a>
+                            <a href="services.html" style="color: #0056b3;">Terms of Use/Policy</a>
                         </div>
                     </div>
                 </li>
@@ -468,45 +468,6 @@
 
     feather.replace();
   </script>
-  <!-- script for hooked -->
- <script>
-document.addEventListener("DOMContentLoaded", async () => {
-  const params = new URLSearchParams(window.location.search);
-  const brand = params.get("brand");
-  const category = params.get("category");
-
-  if (!brand && !category) return; 
-
-  try {
-    
-    const response = await fetch("http://127.0.0.1:3000/api/products/all");
-    const data = await response.json();
-    if (!data.success) return;
-
-    
-    const matchedProducts = data.products.filter(p => 
-      (brand && p.brand === brand) || 
-      (category && p.category.includes(category))
-    );
-
-    
-    for (const product of matchedProducts) {
-      await fetch("http://127.0.0.1:3000/api/shortlist/toggle", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId: product.id, action: "add" })
-      });
-    }
-
-   
-    console.log(`✅ Shortlisted ${matchedProducts.length} products for ${brand || category}`);
-    
-  } catch (err) {
-    console.error("Error enabling shortlist by brand/category:", err);
-  }
-});
-</script>
-
 </body>
 </html>
 

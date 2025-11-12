@@ -648,7 +648,7 @@ table td {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff; /* Blue background */
+    background:linear-gradient(180deg,var(--accent), #1d2b3a); /* Blue background */
     color: white;
     padding: 10px 20px;
     border: none;

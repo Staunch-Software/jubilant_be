@@ -122,7 +122,7 @@ MOCK_PRODUCTS = [
         "name": "AMD Ryzen 9 7950X",
         "price": 699.00,
         "brand": "AMD",
-        "category": "AMD CPU Processors",
+        "category": "AMD CPU Processors Whole CPU Processors",
         "application": "Desktop",
         "socket": "AM5",
         "cores": 16,
@@ -139,9 +139,9 @@ MOCK_PRODUCTS = [
     {
         "id": "cpu-103",
         "name": "Intel Xeon Silver 4314",
-        "price": 450.00,
+        "price": 550.00,
         "brand": "Intel",
-        "category": "Processors - Servers",
+        "category": "Processors - Servers Whole CPU Processors",
         "application": "Server",
         "socket": "LGA4677",
         "cores": 16,
@@ -158,9 +158,9 @@ MOCK_PRODUCTS = [
     {
         "id": "cpu-104",
         "name": "AMD EPYC 9654",
-        "price": 3999.00,
+        "price": 399.00,
         "brand": "AMD",
-        "category": "Processors - Servers",
+        "category": "Processors - Servers Whole CPU Processors",
         "application": "Server",
         "socket": "SP5",
         "cores": 96,
@@ -234,7 +234,7 @@ MOCK_PRODUCTS = [
     {
         "id": "cpu-108",
         "name": "AMD Ryzen Threadripper Pro 3995WX",
-        "price": 4299.00,
+        "price": 299.00,
         "brand": "AMD",
         "category": "Processors - Servers",
         "application": "Server",
@@ -289,7 +289,88 @@ MOCK_PRODUCTS = [
         "image": "/static/images/amdepyc.jpg",
     }
 ]
-
+HDD_PRODUCTS = [
+    {
+        "id": "hdd001",
+        "name": "Seagate Barracuda 1TB",
+        "brand": "Seagate",
+        "category": "Internal HDD",
+        "application": "Desktop",
+        "capacity": 1000,
+        "rpm": 7200,
+        "form_factor": "3.5",
+        "interface": "SATA",
+        "speed": 200,
+        "cache": 64,
+        "price": 39.99,
+        "image": "/static/images/seagate_1tb.jpg",
+        "description": "Reliable 1TB HDD for desktop PCs."
+    },
+    {
+        "id": "hdd002",
+        "name": "Western Digital Blue 2TB",
+        "brand": "Western Digital",
+        "category": "Internal HDD",
+        "application": "Desktop",
+        "capacity": 2000,
+        "rpm": 7200,
+        "form_factor": "3.5",
+        "interface": "SATA",
+        "speed": 200,
+        "cache": 64,
+        "price": 54.99,
+        "image": "/static/images/wd_blue_2tb.jpg",
+        "description": "WD Blue 2TB HDD ideal for storage upgrades."
+    },
+    {
+        "id": "hdd003",
+        "name": "Toshiba X300 4TB",
+        "brand": "Toshiba",
+        "category": "Enterprise HDD",
+        "application": "Server",
+        "capacity": 4000,
+        "rpm": 7200,
+        "form_factor": "3.5",
+        "interface": "SATA",
+        "speed": 240,
+        "cache": 128,
+        "price": 109.99,
+        "image": "/static/images/toshiba_x300_4tb.jpg",
+        "description": "High-performance enterprise-grade HDD."
+    },
+    {
+        "id": "hdd004",
+        "name": "Seagate IronWolf 8TB NAS",
+        "brand": "Seagate",
+        "category": "NAS",
+        "application": "NAS",
+        "capacity": 8000,
+        "rpm": 7200,
+        "form_factor": "3.5",
+        "interface": "SATA",
+        "speed": 210,
+        "cache": 256,
+        "price": 179.99,
+        "image": "/static/images/ironwolf_8tb.jpg",
+        "description": "Designed for NAS systems with continuous operation."
+    },
+    {
+        "id": "hdd005",
+        "name": "Samsung T7 Portable SSD 1TB",
+        "brand": "Samsung",
+        "category": "SSD",
+        "application": "External",
+        "capacity": 1000,
+        "rpm": None,
+        "form_factor": "M.2",
+        "interface": "USB 3.0",
+        "speed": 3500,
+        "cache": 0,
+        "price": 139.99,
+        "image": "/static/images/samsung_t7.jpg",
+        "description": "Ultra-fast portable SSD for professionals."
+    }
+]
 
 shortlist_db = {'user-123': ['cpu-101', 'cpu-106', 'cpu-109']}
 
@@ -567,6 +648,28 @@ def send_submit():
         print("❌ Error in /send-submit:", e)
         return jsonify({"success": False, "message": "❌ Something went wrong. Please try again."}), 500
 
+
+@app.route('/')
+def home_redirect():
+    return render_template('products1.html')
+@app.route('/products1')
+@app.route('/products1.html')
+def products1_page():
+    """
+    Serves the Hard Drive Shortlist page (products1.html).
+    """
+    try:
+        return render_template('products1.html')
+    except Exception as e:
+        print(f"❌ Error rendering products1.html: {e}")
+        return "<h3 style='color:red;text-align:center;'>Unable to load Hard Drive Shortlist page.</h3>", 500
+@app.route('/api/products/hdd', methods=['GET'])
+def get_hdd_products():
+    return jsonify({
+        "success": True,
+        "count": len(HDD_PRODUCTS),
+        "products": HDD_PRODUCTS
+    })
 # ======================================================
 # ✅ DYNAMIC HTML ROUTING
 # ======================================================
@@ -581,6 +684,30 @@ def render_html_page(page):
 # ======================================================
 # ✅ RUN SERVER ON RECOMMENDED PORT (5000)
 # ======================================================
+##search bar render to respective product page
+@app.route("/search")
+def search_redirect():
+    query = request.args.get("q", "").lower().strip()
+
+    # Define your mapping (keyword to product slug)
+    keyword_map = {
+        "intel": "intel",
+        "intel i9": "intel",
+        "amd": "amd",
+        "ryzen": "amd",
+        "xeon": "intel",
+        "threadripper": "amd",
+        "epyc": "amd"
+    }
+
+    # Match keyword
+    for key, slug in keyword_map.items():
+        if key in query:
+            return render_template(f"productslist/{slug}.html")
+
+    # If nothing matches, show "not found" or go to homepage
+    return render_template("index.html", message="Product not found")
+
 if __name__ == '__main__':
     print("🚀 Starting Flask Server on port 5000")
     print("API available at http://127.0.0.1:5000/")

@@ -45,8 +45,8 @@
           <div class="dropdown-content">
             <div class="dropdown-column">
               <a href="it_hardware_procure.html" style="color: #0056b3;">IT Hardware Procurement Solution</a>
-              <a href="service.html" style="color: #0056b3;">Warrenty/Returns/deliever</a>
-              <a href="terms.html" style="color: #0056b3;">Terms of Use/Policy</a>
+              <a href="services.html" style="color: #0056b3;">Warrenty/Returns/deliever</a>
+              <a href="services.html" style="color: #0056b3;">Terms of Use/Policy</a>
             </div>
           </div>
         </li>
@@ -59,13 +59,13 @@
             <div class="dropdown-column">
               <a href="products.html">CPU</a>
               <div class="nested-dropdown">
-                <a href="products.html?brand=Intel">AMD EPYC WOF/TRAY CPU</a>
+                <a href="products.html?category=CPU Processors - Desktops">AMD EPYC WOF/TRAY CPU</a>
                 <a href="">AMD DESKTOP BOX/TRAY CPU</a>
                 <a href="">INTEL BOX/TRAY CPU</a>
                 <a href="">INTEL XEON TRAY CPU</a>
               </div>
 
-              <a href="">Hard Drive</a>
+              <a href="products1.html">Hard Drive</a>
               <div class="nested-dropdown">
                 <a href="">SEAGATE HDD SATA 2.5" & 3.5"</a>
                 <a href="">WESTERN DIGITAL HDD SATA 2.5" & 3.5"</a>
@@ -138,8 +138,12 @@
       </ul>
 
       <div class="search-bar">
-        <input type="text" placeholder="Search Products..." />
-        <i data-feather="search" class="search-icon"></i>
+        <form action="/search" method="GET">
+          <input type="text" name="q" placeholder="Search Products..." />
+          <button type="submit">
+            <i data-feather="search" class="search-icon"></i>
+          </button>
+        </form>
       </div>
     </nav>
   </header>
@@ -618,5 +622,56 @@
       }, 3000);
     });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const brand = params.get("brand");
+  const category = params.get("category");
+
+  if (!brand && !category) return;
+
+  try {
+    const response = await fetch("http://127.0.0.1:5000/api/products/all");
+    const data = await response.json();
+    if (!data.success) return;
+
+    const matchedProducts = data.products.filter(p =>
+      (brand && p.brand.toLowerCase() === brand.toLowerCase()) ||
+      (category && p.category.toLowerCase().includes(category.toLowerCase()))
+    );
+
+    for (const product of matchedProducts) {
+      await fetch("http://127.0.0.1:5000/api/shortlist/toggle", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId: product.id, action: "add" })
+      });
+    }
+
+    console.log(`✅ Shortlisted ${matchedProducts.length} products for ${brand || category}`);
+
+    const shortlistGrid = document.getElementById("shortlist-grid");
+    shortlistGrid.innerHTML = "";
+
+    matchedProducts.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <div class="product-image-container">
+          <img src="http://127.0.0.1:5000${product.image}" alt="${product.name}">
+        </div>
+        <div class="product-details">
+          <h4>${product.name}</h4>
+          <p>${product.description || 'No description available.'}</p>
+          <p><strong>$${product.price}</strong></p>
+        </div>
+      `;
+      shortlistGrid.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Error enabling shortlist by brand/category:", err);
+  }
+});
+</script>
 </body>
 </html>

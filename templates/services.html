@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jubilant Tech - Your Global IT Partner</title>
+
+  <!-- Styles and Fonts -->
+  <link rel="stylesheet" href="/static/css/services.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/jubiliant logo.webp" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/cdE5WvB23nFRK3V46b9C0LpQ3eF2lJpC5/49TzE5/y0T8d5G5o5F5u5u5w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+    <!-- Header -->
+    <header class="header-container">
+        <nav class="main-nav">
+        <div class="logo">
+            <a href="index.html" aria-label="#">
+            <img
+                src="https://img1.wsimg.com/isteam/ip/46c16ae4-f23f-4e6f-88a2-e319391f42fa/Company%20Logo%202025%20v1.png/:/rs=w:138,h:118.9,cg:true,m/cr=w:138,h:118.9/qt=q:100/ll"
+                alt="Jubilant Tech Logo"
+            />
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="dropdown">
+            <a href="#" class="dropbtn">Service</a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                <a href="it_hardware_procure.html" style="color: #0056b3;">IT Hardware Procurement Solution</a>
+                <a href="services.html" style="color: #0056b3;">Warrenty/Returns/deliever</a>
+                <a href="services.html" style="color: #0056b3;">Terms of Use/Policy</a>
+                </div>
+            </div>
+            </li>
+
+            <li class="dropdown">
+            <a href="#" class="dropbtn">
+                All Products <i data-feather="chevron-down" class="feather-icon"></i>
+            </a>
+            <div class="dropdown-content">
+                <div class="dropdown-column">
+                <a href="products.html">CPU</a>
+                <div class="nested-dropdown">
+                    <a href="products.html?brand=Intel">AMD EPYC WOF/TRAY CPU</a>
+                    <a href="">AMD DESKTOP BOX/TRAY CPU</a>
+                    <a href="">INTEL BOX/TRAY CPU</a>
+                    <a href="">INTEL XEON TRAY CPU</a>
+                </div>
+
+                <a href="">Hard Drive</a>
+                <div class="nested-dropdown">
+                    <a href="">SEAGATE HDD SATA 2.5" & 3.5"</a>
+                    <a href="">WESTERN DIGITAL HDD SATA 2.5" & 3.5"</a>
+                    <a href="">TOSHIBA HDD SATA 2.5" & 3.5"</a>
+                </div>
+
+                <a href="#">SSD</a>
+                <div class="nested-dropdown">
+                    <a href="">SAMSUNG SSD</a>
+                    <a href="">Sandisk SSD</a>
+                    <a href="">LEXAR SSD</a>
+                </div>
+
+                <a href="#">Memory</a>
+                <div class="nested-dropdown">
+                    <a href="">HYNIX MEMORY SDIM & LDIM DDR</a>
+                    <a href="">SAMSUNG MEMROY SDIM & LDIM DDR</a>
+                    <a href="">KINGSTON MEMORY SDIM & LDIM DDR</a>
+                </div>
+
+                <a href="">Monitors</a>
+                <div class="nested-dropdown">
+                    <a href="">SAMSUNG</a>
+                    <a href="">ACER</a>
+                    <a href="">HP</a>
+                    <a href="">DELL</a>
+                    <a href="">LENOVO</a>
+                </div>
+
+                <a href="">Laptop</a>
+                <div class="nested-dropdown">
+                    <a href="">ACER</a>
+                    <a href="">HP</a>
+                    <a href="">DELL</a>
+                    <a href="">LENOVO</a>
+                </div>
+
+                <a href="">Mini Pc</a>
+                <div class="nested-dropdown">
+                    <a href="">INTEL NUC</a>
+                    <a href="">HP</a>
+                </div>
+
+                <a href="">Business Notebooks</a>
+                <div class="nested-dropdown">
+                    <a href="">HP</a>
+                    <a href="">DELL</a>
+                    <a href="">LENOVO</a>
+                </div>
+
+                <a href="">Networking</a>
+                <div class="nested-dropdown">
+                    <a href="">LINKSYS</a>
+                    <a href="">ARUBA</a>
+                    <a href="">CISCO</a>
+                </div>
+
+                <a href="">Docking sections</a>
+                <div class="nested-dropdown">
+                    <a href="">LENOVO</a>
+                    <a href="">DELL</a>
+                </div>
+                </div>
+            </div>
+            </li>
+
+            <li><a href="suppliers.html">Brand Suppliers</a></li>
+            <li><a href="inquiry.html">Inquiry</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+
+        <div class="search-bar">
+            <form action="/search" method="GET">
+            <input type="text" name="q" placeholder="Search Products..." />
+            <button type="submit">
+                <i data-feather="search" class="search-icon"></i>
+            </button>
+            </form>
+        </div>
+        </nav>
+    </header>
+
+<section id="all">
+    <div class="hub-layout">
+        <nav class="hub-nav">
+            <div class="nav-title">Operations</div>
+            <ul class="nav-list">
+                <li><a href="#delivery" class="nav-link">Delivery</a></li>
+                <li><a href="#returns" class="nav-link">Returns & Warranty</a></li>
+            </ul>
+            <div class="nav-title" style="margin-top: 25px;">Legal & Privacy</div>
+            <ul class="nav-list">
+                <li><a href="#terms" class="nav-link">Terms of Use</a></li>
+                <li><a href="#privacy" class="nav-link">Privacy Policy</a></li>
+                <li><a href="#cookies" class="nav-link">Cookies</a></li>
+            </ul>
+             <div class="nav-title" style="margin-top: 25px;">Partners</div>
+            <ul class="nav-list">
+                <li><a href="#suppliers" class="nav-link">Brand Suppliers</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div style="margin-bottom: 40px;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Customer Service</h1>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">Transparent policies for a secure and reliable procurement experience.</p>
+            </div>
+
+            <section id="delivery" class="content-section">
+                <div class="section-header">
+                    <span class="section-icon">🚚</span>
+                    <h2>Delivery Information</h2>
+                </div>
+                <p>We utilize trusted carriers to ensure your hardware arrives safely. Please inspect all packages immediately upon arrival.</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Standard Shipping</h4>
+                        <p>3–7 business days.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted)">Best for routine stock replenishment.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Express</h4>
+                        <p>1–3 business days.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted)">For urgent project requirements.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Freight / Bulk</h4>
+                        <p>Scheduled delivery windows.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted)">Required for heavy server racks or large volume orders.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #fff4e5; border-left: 4px solid #f97316; border-radius: 4px;">
+                    <strong>Important:</strong> Transit damage must be reported within 48 hours of delivery to be eligible for a claim.
+                </div>
+            </section>
+
+            <section id="returns" class="content-section">
+                <div class="section-header">
+                     <span class="section-icon">↺</span>
+                    <h2>Returns & Warranty</h2>
+                </div>
+                <p>If a product isn't right for your needs, you may request a return within our standard window.</p>
+                <ul class="policy-list">
+                    <li><strong>Window:</strong> 7–10 working days from delivery.</li>
+                    <li><strong>Condition:</strong> Must be original, unused, with all packaging intact.</li>
+                    <li><strong>Process:</strong> Contact support to obtain a Return Merchandise Authorization (RMA) before shipping back.</li>
+                    <li><strong>Exclusions:</strong> Customized hardware, activated software licenses, and opened consumables.</li>
+                </ul>
+            </section>
+
+            <section id="terms" class="content-section">
+                <div class="section-header">
+                     <span class="section-icon">⚖️</span>
+                    <h2>Terms of Use</h2>
+                </div>
+                <p>By accessing our procurement platform, you agree to standard commercial terms.</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Intellectual Property</h4>
+                        <p>All logos, text, and code on this site are owned by or licensed to us and protected by IP laws.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>User Obligations</h4>
+                        <p>You agree to provide accurate account information and use the site only for lawful business purposes.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Disclaimers</h4>
+                        <p>Services are provided "as is". We are not liable for indirect or consequential damages from site use.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="privacy" class="content-section">
+                 <div class="section-header">
+                     <span class="section-icon">🔒</span>
+                    <h2>Privacy Policy</h2>
+                </div>
+                <p>We are committed to protecting your business and personal data.</p>
+                <h3>Data We Collect & Use</h3>
+                <ul class="policy-list">
+                    <li><strong>Account Data:</strong> Name, email, phone for order processing and support.</li>
+                    <li><strong>Technical Data:</strong> Browser type and approximate location for site security and performance.</li>
+                </ul>
+                <h3 style="margin-top: 20px;">Your Rights</h3>
+                <p>You may request to access, correct, or permanently delete your personal information from our systems at any time by contacting support.</p>
+            </section>
+
+             <section id="cookies" class="content-section">
+                <div class="section-header">
+                     <span class="section-icon">🍪</span>
+                    <h2>Cookie Policy</h2>
+                </div>
+                <p>We use small text files (cookies) to make your browsing experience functional.</p>
+                 <ul class="policy-list">
+                    <li><strong>Essential:</strong> Required for login sessions and keeping items in your cart.</li>
+                    <li><strong>Performance:</strong> Anonymous analytics to help us improve site speed and flow.</li>
+                    <li><strong>Functional:</strong> Remembers your language or regional preferences.</li>
+                </ul>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">You may disable non-essential cookies via your browser settings, though some site features may degrade.</p>
+            </section>
+
+             <section id="suppliers" class="content-section">
+                <div class="section-header">
+                     <span class="section-icon">🤝</span>
+                    <h2>Authorized Brand Suppliers</h2>
+                </div>
+                <p>We source directly from leading global technology manufacturers to ensure authenticity and full warranty support.</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;">
+                    <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">AMD</span>
+                    <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Dell</span>
+                    <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">HP</span>
+                    <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Intel</span>
+                    <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Lenovo</span>
+                    <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Samsung</span>
+                    <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Western Digital</span>
+                    <a href="../suppliers.html"><span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem; color: var(--accent);">+ Many More</span></a>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</section>
+
+    <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Jubilant Tech</h3>
+        <p>Your premier global supplier of IT hardware and components.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/aboutus.html">About Us</a></li>
+          <li><a href="/inquiry.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>Email: sales@jubilant-tech.com</p>
+        <p>Phone: +65 65206545</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i data-feather="facebook"></i></a>
+          <a href="#"><i data-feather="twitter"></i></a>
+          <a href="#"><i data-feather="linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Jubilant Tech. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Inquiry Modal -->
+    <button class="inquiry-button" onclick="toggleModal('open')">💬 Inquiry</button>
+
+    <div id="inquiryModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h2>Send an Inquiry</h2>
+            <span class="close-btn" onclick="toggleModal('close')">&times;</span>
+        </div>
+
+        <p class="modal-subtitle">Tell us what you need—we'll respond within 24 hours.</p>
+
+        <form id="inquiryForm" action="/send-inquiry" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" value="+91 98765 43210" />
+
+            <label for="product">Product / Service</label>
+            <select id="product" name="product">
+            <option>Select</option>
+            <option>Jubilant System</option>
+            <option>Other Service</option>
+            </select>
+
+            <label for="quantity">Quantity (optional)</label>
+            <input type="number" id="quantity" name="quantity" placeholder="1" />
+
+            <p class="modal-footer-text">
+            We respect your privacy. We'll only use this info to reply.
+            </p>
+
+            <button type="submit" class="submit-button">Inquiry New</button>
+            <p id="successMsg" style="color: green; display: none;">Inquiry sent successfully!</p>
+        </form>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script>
+        function toggleModal(action) {
+        const modal = document.getElementById("inquiryModal");
+        modal.style.display = action === "open" ? "flex" : "none";
+        }
+
+        document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const response = await fetch("/send-inquiry", { method: "POST", body: formData });
+        const result = await response.json();
+        const successMsg = document.getElementById("successMsg");
+        const modal = document.getElementById("inquiryModal");
+
+        if (result.success) {
+            successMsg.textContent = result.message || "Inquiry sent successfully!";
+            successMsg.style.color = "green";
+            successMsg.style.display = "block";
+            this.reset();
+            setTimeout(() => (modal.style.display = "none"), 2000);
+        } else {
+            successMsg.textContent = result.message || "Failed to send inquiry. Please try again.";
+            successMsg.style.color = "red";
+            successMsg.style.display = "block";
+        }
+
+        setTimeout(() => (successMsg.style.display = "none"), 5000);
+        });
+
+        feather.replace();
+    </script>
+
+    <script>
+        const slider = document.getElementById("productSlider");
+        const leftBtn = document.getElementById("leftBtn");
+        const rightBtn = document.getElementById("rightBtn");
+
+        leftBtn.addEventListener("click", () => (slider.scrollLeft -= 300));
+        rightBtn.addEventListener("click", () => (slider.scrollLeft += 300));
+
+        let autoSlide = setInterval(() => {
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+            slider.scrollLeft = 0;
+        } else {
+            slider.scrollLeft += 300;
+        }
+        }, 3000);
+
+        slider.addEventListener("mouseover", () => clearInterval(autoSlide));
+        slider.addEventListener("mouseout", () => {
+        autoSlide = setInterval(() => {
+            if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+            slider.scrollLeft = 0;
+            } else {
+            slider.scrollLeft += 300;
+            }
+        }, 3000);
+        });
+    </script>
+
+    <script>
+        // Simple Intersection Observer to highlight active nav link based on scroll position
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -70% 0px', // Trigger when section is near top of viewport
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active from all
+                        links.forEach(link => link.classList.remove('active'));
+                        // Add active to corresponding link
+                        const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+    <script>
+  feather.replace();
+</script>
+
+</body>
+</html>

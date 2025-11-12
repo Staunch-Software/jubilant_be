@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ].join(' | ');
 
             // ✅ UPDATED: Redirect based on product brand (Intel → intel.html, AMD → amd.html)
-            const targetPage = `/productslist/${product.brand.toLowerCase()}.html`;
+            const targetPage = `/productslist/${product.name.toLowerCase()}.html`;
 
             const cardHtml = `
                 <div class="product-card" data-product-id="${product.id}">
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                onerror="this.src='https://placehold.co/150x150/d1d5db/374151?text=Image+NA'">
                     </div>
                     <div class="product-details">
-                        <a href="${product.name.toLowerCase().replace(/\\s+/g, '-')}.html" class="product-link" style="text-decoration: none; color: inherit;">
+                        <a href="/productslist/${product.name.toLowerCase()}.html" class="product-link" style="text-decoration: none; color: inherit;">
                         <h4 class="product-title">${product.name}</h4></a>
                         <p class="product-spec-snippet">${product.description}</p>
                         <small class="product-meta">${specs}</small>
@@ -213,7 +213,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
         paginationContainer.appendChild(createPageButton('→', currentPage + 1, false, currentPage === totalPages));
     }
+//that is an hook
+    // ------------------------------------
+//  II. FETCH PRODUCTS FROM FLASK  (REPLACE THIS WHOLE FUNCTION)
+// ------------------------------------
+async function fetchAllProducts() {
+  shortlistGrid.innerHTML = '<p class="loading-message">Loading products...</p>';
+  filterSidebar.style.opacity = '0.5';
 
+  try {
+    const response = await fetch(API_ALL_PRODUCTS_URL);
+    if (!response.ok) throw new Error('Could not connect to backend.');
+
+    const data = await response.json();
+
+    allProducts = (data.products || []).map(p => ({
+      ...p,
+      price: parseFloat(p.price),
+      cores: parseInt(p.cores),
+      tdp: parseInt(p.tdp),
+      threads: parseInt(p.threads),
+      cache: parseInt(p.cache),
+      base_freq: parseFloat(p.base_freq),
+      max_memory_size: parseInt(p.max_memory_size),
+      description: p.description || 'No description available.'
+    }));
+
+    // ---- URL-driven filtering (brand/category) ----
+    const params = new URLSearchParams(window.location.search);
+    const brandParam = (params.get('brand') || '').toLowerCase();      // e.g. AMD
+    const categoryParam = (params.get('category') || '').toLowerCase(); // e.g. cpu
+
+    if (brandParam || categoryParam) {
+      filteredProducts = allProducts.filter(p => {
+        const brandOk = !brandParam || String(p.brand || '').toLowerCase() === brandParam;
+        const categoryOk = !categoryParam || String(p.category || '').toLowerCase().includes(categoryParam);
+        return brandOk && categoryOk;
+      });
+    } else {
+      filteredProducts = allProducts;
+    }
+
+    // Optional: update page heading
+    const titleEl = document.getElementById('view-title');
+    if (titleEl) {
+      if (brandParam && categoryParam) {
+        titleEl.textContent = `${brandParam.toUpperCase()} ${categoryParam.toUpperCase()} PRODUCTS`;
+      } else if (brandParam) {
+        titleEl.textContent = `${brandParam.toUpperCase()} PRODUCTS`;
+      } else if (categoryParam) {
+        titleEl.textContent = `${categoryParam.toUpperCase()} PRODUCTS`;
+      } else {
+        titleEl.textContent = 'All Products';
+      }
+    }
+
+    renderProducts(filteredProducts);
+    filterSidebar.style.opacity = '1';
+  } catch (error) {
+    console.error("Fetch error:", error);
+    shortlistGrid.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
+  }
+}
+
+//////finished
     // ------------------------------------
     //  IV. EVENT LISTENERS
     // ------------------------------------
@@ -235,4 +298,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initial Load ---
     fetchAllProducts();
+    // --- Initial Load ---
+fetchAllProducts().then(() => {
+  // ✅ Wait until all checkboxes exist before applying URL-based checks
+  setTimeout(() => {
+    const params = new URLSearchParams(window.location.search);
+    const brandParam = params.get("brand");
+    const categoryParam = params.get("category");
+
+    if (brandParam) {
+      const brandCheckbox = document.querySelector(`input[name="brand"][value="${brandParam}"]`);
+      if (brandCheckbox) {
+        brandCheckbox.checked = true;
+        brandCheckbox.parentElement.style.fontWeight = "600";
+        brandCheckbox.parentElement.style.color = "#0056b3";
+      }
+    }
+
+    if (categoryParam) {
+      document.querySelectorAll('input[name="category"]').forEach(cb => {
+        if (cb.value.toLowerCase().includes(categoryParam.toLowerCase())) {
+          cb.checked = true;
+          cb.parentElement.style.fontWeight = "600";
+          cb.parentElement.style.color = "#0056b3";
+        }
+      });
+
+      // expand nested CPU filter if category is related
+      const toggleWhole = document.getElementById("toggle-whole");
+      const wholeOptions = document.getElementById("whole-options");
+      if (wholeOptions && toggleWhole) {
+        wholeOptions.style.display = "block";
+        toggleWhole.classList.add("open");
+      }
+    }
+
+    // 🔁 trigger filtering again so it aligns with checked boxes visually
+    if (typeof applyClientFilters === "function") applyClientFilters();
+  }, 500); // <-- small delay ensures DOM is ready
+});
+
 });
