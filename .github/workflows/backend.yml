@@ -1,0 +1,43 @@
+name: Deploy Jubilant Flask Backend to Azure VM
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on pushes to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: SSH into Azure VM and deploy backend
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AZURE_VM_HOST }}
+          username: ${{ secrets.AZURE_VM_USER }}
+          key: ${{ secrets.AZURE_VM_SSH_KEY }}
+          port: 22
+          script: |
+            echo "🚀 Starting Jubilant Backend Deployment..."
+
+            cd /var/www/jubilant/jubilant_be
+
+            echo "📥 Pulling latest code from main branch..."
+            git pull origin main
+
+            echo "📦 Activating virtual environment..."
+            source jubilant-venv/bin/activate
+
+            echo "📦 Installing/updating dependencies..."
+            pip install -r requirements.txt
+
+            echo "🔁 Restarting Gunicorn service..."
+            sudo systemctl restart jubilant-backend
+
+            echo "🔁 Reloading Nginx..."
+            sudo systemctl reload nginx
+
+            echo "✅ Jubilant backend successfully deployed!"
