@@ -35,6 +35,7 @@ jobs:
             pip install -r requirements.txt
 
             echo "🔁 Restarting Gunicorn service..."
+            sudo systemctl daemon-reload
             sudo systemctl restart jubilant-backend
 
             echo "🔁 Reloading Nginx..."

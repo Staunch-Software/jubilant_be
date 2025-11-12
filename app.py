@@ -12,13 +12,18 @@ from dotenv import load_dotenv
 # ======================================================
 load_dotenv()
 
+
 # ======================================================
-# ✅ FRONTEND PATH SETUP (for separated folders)
+# ✅ FRONTEND PATH SETUP (Environment-Independent)
 # ======================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FRONTEND_DIR = os.path.join(BASE_DIR, "../frontend")
-TEMPLATES_DIR = os.path.join(FRONTEND_DIR, "templates")
-STATIC_DIR = os.path.join(FRONTEND_DIR, "static")
+FRONTEND_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'jubilant_ui'))
+TEMPLATES_DIR = os.path.join(FRONTEND_DIR, 'templates')
+STATIC_DIR = os.path.join(FRONTEND_DIR, 'static')
+
+# Debug print (optional)
+print(f"🧩 Using templates from: {TEMPLATES_DIR}")
+print(f"🧩 Using static files from: {STATIC_DIR}")
 
 # ======================================================
 # ✅ Initialize Flask
